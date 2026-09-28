@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "python312"]
+
+[phases.install]
+cmds = ["bash railway-build.sh"]
+
+[start]
+cmd = "node railway-start.js"

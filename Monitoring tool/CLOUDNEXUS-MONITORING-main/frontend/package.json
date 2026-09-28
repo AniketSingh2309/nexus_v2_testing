@@ -1,0 +1,24 @@
+{
+  "name": "cloudnexus-frontend",
+  "version": "1.0.0",
+  "description": "CloudNexus Multi-Cloud Monitoring Dashboard",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-simple-maps": "^3.0.0",
+    "recharts": "^2.12.7",
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.2.13"
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 44">
+  <text x="3" y="30" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="900" fill="#232F3E" letter-spacing="-2">aws</text>
+  <path d="M12,38 C28,47 52,47 68,38" fill="none" stroke="#FF9900" stroke-width="3.2" stroke-linecap="round"/>
+  <polygon points="64.5,34.5 72,38 64.5,41.5" fill="#FF9900"/>
+</svg>

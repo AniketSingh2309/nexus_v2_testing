@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+buildCommand = "bash railway-build.sh"
+
+[deploy]
+startCommand = "node railway-start.js"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

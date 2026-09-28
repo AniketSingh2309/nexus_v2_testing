@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 64">
+  <defs>
+    <clipPath id="gcp-cloud">
+      <path d="M69.5 28.8c-.1-.8-.1-1.6-.1-2.4 0-9.9-8-17.9-17.9-17.9-2.9 0-5.6.7-8 1.9C40.9 6.6 35.6 4 29.7 4 18.7 4 9.8 12.9 9.8 23.9c0 .5 0 1 .1 1.5C4.3 27.2 0 32.7 0 39.2 0 47.8 7 55 15.6 55H71c8 0 14.5-6.5 14.5-14.5 0-7-5-12.9-11.5-13.8z"/>
+    </clipPath>
+  </defs>
+  <rect clip-path="url(#gcp-cloud)" x="0" y="0" width="86" height="64" fill="#4285F4"/>
+  <circle clip-path="url(#gcp-cloud)" cx="28" cy="20" r="20" fill="#EA4335"/>
+  <circle clip-path="url(#gcp-cloud)" cx="56" cy="14" r="16" fill="#FBBC05"/>
+  <circle clip-path="url(#gcp-cloud)" cx="68" cy="36" r="20" fill="#34A853"/>
+</svg>

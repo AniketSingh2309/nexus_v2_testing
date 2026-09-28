@@ -1,0 +1,82 @@
+[
+  {
+    "id": "openai",
+    "displayName": "OpenAI",
+    "baseUrl": "https://api.openai.com/v1",
+    "usagePath": "/organization/costs?start_time=1730419200&limit=1",
+    "authType": "bearer",
+    "authConfigHint": { "value": "" },
+    "fieldMapping": {
+      "provider": "",
+      "total_cost": "data[0].results[0].amount.value",
+      "usage_amount": "data[0].results[0].amount.value",
+      "unit": "data[0].results[0].amount.currency",
+      "timestamp": "data[0].end_time"
+    },
+    "notes": "Requires an Admin API key (api.usage.read scope) — a regular project key cannot call /organization/costs. Replace start_time with a real Unix timestamp. Verify the response shape against your account before relying on it; OpenAI has changed this API's structure before."
+  },
+  {
+    "id": "anthropic",
+    "displayName": "Anthropic",
+    "baseUrl": "https://api.anthropic.com/v1",
+    "usagePath": "/organizations/cost_report?limit=1",
+    "authType": "api_key_header",
+    "authConfigHint": { "headerName": "x-api-key", "value": "", "extraHeaders": { "anthropic-version": "2023-06-01" } },
+    "fieldMapping": {
+      "provider": "",
+      "total_cost": "data[0].results[0].amount",
+      "usage_amount": "data[0].results[0].amount",
+      "unit": "data[0].results[0].currency",
+      "timestamp": "data[0].starting_at"
+    },
+    "notes": "Requires an Admin API key. The extraHeaders.anthropic-version header is required by Anthropic's API on every request — the generic connector supports static extra headers alongside the auth header for exactly this reason."
+  },
+  {
+    "id": "gemini",
+    "displayName": "Google Gemini",
+    "baseUrl": "https://cloudbilling.googleapis.com/v1",
+    "usagePath": "/billingAccounts",
+    "authType": "bearer",
+    "authConfigHint": { "value": "" },
+    "fieldMapping": {
+      "provider": "",
+      "total_cost": "",
+      "usage_amount": "",
+      "unit": "",
+      "timestamp": ""
+    },
+    "notes": "KNOWN LIMITATION: Google Cloud Billing has no static-API-key endpoint — it requires OAuth2 (service account or a short-lived 'gcloud auth print-access-token'), which expires and needs manual refresh; it does not fit this connector's static-credential model. For real Gemini/Vertex AI billing, use the existing AWS/Azure/GCP cloud-account integration instead. This template is left as a documented placeholder, not a working default."
+  },
+  {
+    "id": "stripe",
+    "displayName": "Stripe",
+    "baseUrl": "https://api.stripe.com/v1",
+    "usagePath": "/balance_transactions?limit=1",
+    "authType": "basic",
+    "authConfigHint": { "username": "", "value": "" },
+    "fieldMapping": {
+      "provider": "",
+      "total_cost": "data[0].amount",
+      "usage_amount": "data[0].amount",
+      "unit": "data[0].currency",
+      "timestamp": "data[0].created"
+    },
+    "notes": "Stripe uses HTTP Basic auth with your secret key as the username and an empty password — put the secret key in the 'username' field. amount is in the smallest currency unit (e.g. cents); timestamp is a Unix epoch seconds."
+  },
+  {
+    "id": "twilio",
+    "displayName": "Twilio",
+    "baseUrl": "https://api.twilio.com/2010-04-01",
+    "usagePath": "/Accounts/REPLACE_WITH_ACCOUNT_SID/Usage/Records.json?PageSize=1",
+    "authType": "basic",
+    "authConfigHint": { "username": "", "value": "" },
+    "fieldMapping": {
+      "provider": "",
+      "total_cost": "usage_records[0].price",
+      "usage_amount": "usage_records[0].usage",
+      "unit": "usage_records[0].usage_unit",
+      "timestamp": "usage_records[0].end_date"
+    },
+    "notes": "Twilio embeds the Account SID in the URL path itself — replace REPLACE_WITH_ACCOUNT_SID in usagePath with your real Account SID before saving. Basic auth: Account SID as username, Auth Token as the value. price is typically negative (a cost) in Twilio's own currency (see price_unit)."
+  }
+]
